@@ -1,8 +1,8 @@
 /*
- * Name:
- * Date Submitted:
- * Lab Section:
- * Assignment Name:
+ * Name: Russell Welch
+ * Date Submitted: 2/13/23
+ * Lab Section: 001
+ * Assignment Name: Finding Groups Using Recursion
  */
 
 #pragma once
@@ -42,6 +42,7 @@ class Grouping
 {
     private:
         int grid[10][10];
+        const int GRID_SIZE = 10;
         vector<vector<GridSquare>> groups;
     public:
         Grouping(); //Default constructor, no groups

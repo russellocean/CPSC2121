@@ -1,8 +1,8 @@
 /*
- * Name:
- * Date Submitted:
- * Lab Section:
- * Assignment Name:
+ * Name: Russell Welch
+ * Date Submitted: 2/13/23
+ * Lab Section: 001
+ * Assignment Name: Finding Groups Using Recursion
  */
 
 #include "Grouping.h"
@@ -14,10 +14,53 @@
 using namespace std;
 
 //Implement the (parameterized) constructor and findGroup functions below
+Grouping::Grouping(string fileName) 
+{
+    ifstream file(fileName);
+    if (file.is_open()) {
+        string line;
+        int row = 0;
+        while (getline(file, line)) {
+            for (int col = 0; col < GRID_SIZE; col++) {
+                if (line[col] == '.') {
+                    grid[row][col] = 0;
+                } else {
+                    grid[row][col] = 1;
+                }
+            }
+            row++;
+        }
+        file.close();
+    }
 
+    //process the grid to find the groups
+    for (int r = 0; r < GRID_SIZE; r++) {
+        for (int c = 0; c < GRID_SIZE; c++) {
+            if (grid[r][c] == 1) {
+                findGroup(r, c);
+            }
+        }
+    }
+}
 
+void Grouping::findGroup(int r, int c)
+{
+    //check if the current cell is occupied and within bounds of the grid
+    if (grid[r][c] == 1 && r >= 0 && r < GRID_SIZE && c >= 0 && c < GRID_SIZE) {
+        //mark the cell as visited
+        grid[r][c] = 2;
 
-
+        //add the cell to the current group
+        vector<GridSquare> currentGroup;
+        currentGroup.push_back(GridSquare(r, c));
+        
+        //recursively search the neighboring cells
+        findGroup(r-1, c); //up
+        findGroup(r+1, c); //down
+        findGroup(r, c-1); //left
+        findGroup(r, c+1); //right
+    }
+}
 
 
 //Simple main function to test Grouping
