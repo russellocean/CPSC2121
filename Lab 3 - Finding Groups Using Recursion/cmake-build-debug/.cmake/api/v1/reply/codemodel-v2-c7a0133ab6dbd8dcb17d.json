@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.23"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Lab_3___Finding_Groups_Using_Recursion",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Lab_3___Finding_Groups_Using_Recursion::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Lab_3___Finding_Groups_Using_Recursion-Debug-8338f7e312d47cacfea3.json",
+					"name" : "Lab_3___Finding_Groups_Using_Recursion",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/russellwelch/Dev/CPSC2121/Lab 3 - Finding Groups Using Recursion/cmake-build-debug",
+		"source" : "/Users/russellwelch/Dev/CPSC2121/Lab 3 - Finding Groups Using Recursion"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

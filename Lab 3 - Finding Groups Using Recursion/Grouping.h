@@ -42,7 +42,6 @@ class Grouping
 {
     private:
         int grid[10][10];
-        const int GRID_SIZE = 10;
         vector<vector<GridSquare>> groups;
     public:
         Grouping(); //Default constructor, no groups
