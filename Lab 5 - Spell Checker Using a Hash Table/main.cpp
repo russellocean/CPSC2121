@@ -1,8 +1,8 @@
 /*
- * Name:
- * Date Submitted:
- * Lab Section:
- * Assignment Name:
+ * Name: Russell Welch
+ * Date Submitted: 03/06/2023
+ * Lab Section: 001 
+ * Assignment Name: Lab 5 - Spell Checker Using a Hash Table
  */
  
  #include "stringset.h"
@@ -13,12 +13,12 @@
  void loadStringset(Stringset& words, string filename);
  vector<string> spellcheck(const Stringset& words, string word);
  
- int main()
- {
-     Stringset wordlist;
-     testStringset(wordlist);
-     return 0;
- }
+//  int main()
+//  {
+//      Stringset wordlist;
+//      testStringset(wordlist);
+//      return 0;
+//  }
  
  void testStringset(Stringset& words)
  {
@@ -77,12 +77,51 @@
      } while (choice[0] != 'Q' && choice[0] != 'q');
  }
  
- void loadStringset(Stringset& words, string filename)
- {
-     //Implement this function
- }
- 
- vector<string> spellcheck(const Stringset& words, string word)
- {
-     //Implement this function
- }
+/**
+ * Loads words from a file into a Stringset object
+ * @param words The Stringset object to load the words into
+ * @param filename The name of the file containing the words
+ */
+void loadStringset(Stringset& words, string filename) {
+    // Open the file
+    ifstream file(filename);
+    if (!file) {
+        cerr << "Error: Could not open file " << filename << endl;
+        return;
+    }
+
+    string word;
+    // Read each word from the file and insert into the Stringset
+    while (file >> word) {
+        words.insert(word);
+    }
+
+    // Close the file
+    file.close();
+}
+
+/**
+ * Finds alternative spellings for a given word
+ * @param words The Stringset object containing the dictionary of words
+ * @param word The word to check for alternative spellings
+ * @return A vector of strings containing the alternative spellings of the word
+ */
+vector<string> spellcheck(const Stringset& words, string word) {
+    vector<string> alternatives;
+
+    // Loop through each character in the input word
+    for (int i = 0; i < word.length(); i++) {
+        // Loop through each possible character substitution (a-z)
+        for (char c = 'a'; c <= 'z'; c++) {
+            // Generate a new word with the character substitution
+            string newWord = word;
+            newWord[i] = c;
+
+            // Check if the new word exists in the dictionary and is not the original word
+            if (words.find(newWord) && newWord != word) {
+                alternatives.push_back(newWord);
+            }
+        }
+    }
+    return alternatives;
+}
