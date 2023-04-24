@@ -1,8 +1,8 @@
 /*
- * Name:
- * Date Submitted:
- * Lab Section:
- * Assignment Name:
+ * Name: Russell Welch
+ * Date Submitted: 04/24/2023
+ * Lab Section: 001
+ * Assignment Name: Lab 10 - Using Breadth-First Search to Solve Puzzles
  */
 
 #include <iostream>
@@ -86,20 +86,45 @@ string neighbor_label(int s, int t)
 
 void build_graph(void)
 {
-  //Implement this function
+  // Iterate through all possible states (0 to 15)
+  for (state s = 0; s < 16; ++s)
+  {
+    // Iterate through all possible neighbor states for the current state
+    for (state t = 0; t < 16; ++t)
+    {
+      // Check if the current neighbor state is a valid transition
+      string label = neighbor_label(s, t);
+      if (!label.empty())
+      {
+        bool left_bank_safe = (bit(s, wolf) != bit(s, goat) || bit(s, goat) == bit(s, me)) &&
+                              (bit(s, goat) != bit(s, cabbage) || bit(s, goat) == bit(s, me));
+        bool right_bank_safe = (bit(t, wolf) != bit(t, goat) || bit(t, goat) == bit(t, me)) &&
+                               (bit(t, goat) != bit(t, cabbage) || bit(t, goat) == bit(t, me));
+
+        // If both left and right banks are safe, add the valid neighbor state
+        if (left_bank_safe && right_bank_safe)
+        {
+          nbrs[s].push_back(t);
+          edge_label[make_pair(s, t)] = label;
+        }
+      }
+    }
+  }
 }
 
-int main(void)
-{
-  build_graph();
 
-  state start = 0, end = 15;
+
+// int main(void)
+// {
+//   build_graph();
+
+//   state start = 0, end = 15;
   
-  search(start);
-  if (visited[end])
-    print_path (start, end);
-  else
-    cout << "No path!\n";
+//   search(start);
+//   if (visited[end])
+//     print_path (start, end);
+//   else
+//     cout << "No path!\n";
   
-  return 0;
-}
+//   return 0;
+// }
