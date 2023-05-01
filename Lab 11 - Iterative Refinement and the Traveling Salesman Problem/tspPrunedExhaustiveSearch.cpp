@@ -1,8 +1,8 @@
 /*
- * Name:
- * Date Submitted:
- * Lab Section:
- * Assignment Name:
+ * Name: Russell Welch
+ * Date Submitted: 05/01/2023
+ * Lab Section: 001
+ * Assignment Name: Lab 11 - Iterative Refinement and the Traveling Salesman Problem
  */
 
 #include <iostream>
